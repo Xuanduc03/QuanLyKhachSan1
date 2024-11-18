@@ -1,0 +1,123 @@
+﻿<UserControl
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av"  x:Class="QuanLyKhachSan1.Views.DatPhong"
+        Background="#f0f0f0" av:DesignWidth="854.034">
+
+    <Grid Margin="10">
+        <!-- Header -->
+        <Border Background="GhostWhite" Padding="10">
+            <TextBlock Text="ĐẶT PHÒNG" FontSize="18" FontWeight="Bold" Foreground="black" HorizontalAlignment="left"/>
+        </Border>
+
+        <!-- Main Content Area -->
+        <Grid Margin="0,50,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Tabs -->
+            <TabControl Grid.Row="0" Margin="0,0,0,10">
+                <TabItem Header="Thông tin">
+                    <!-- Content for Thông tin -->
+                </TabItem>
+            </TabControl>
+
+            <!-- Form Section -->
+            <StackPanel Orientation="Vertical" Grid.Row="1" Margin="10,0">
+                <!-- Row 1: Check-in Dates and Times -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,1">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Ngày checkin *" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Margin="10">
+                        <TextBox Width="100" Text="1/1/2025"/>
+                    </StackPanel>
+                    <StackPanel Margin="10">
+                        <TextBox Width="70" Text="12:00:00"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="10">
+                        <TextBox Width="100" Text="1/1/2025"/>
+                    </StackPanel>
+                    <StackPanel Margin="10">
+                        <TextBox Width="70" Text="12:00:00"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Other Form Fields -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Loại hình" FontWeight="Bold"/>
+                    </StackPanel>
+                    <!-- Add other fields as needed here -->
+                    <ComboBox Width="120" Margin="10" HorizontalAlignment="Left">
+                        <ComboBoxItem Content="Tự động"/>
+                    </ComboBox>
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Giảm trừ" FontWeight="Bold"/>
+                    </StackPanel>
+                    <ComboBox Width="109" Margin="10">
+                        <ComboBoxItem Content="Giảm trừ"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Other Form Fields -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Phương thức thanh toán" FontSize="11" FontWeight="Bold"/>
+                    </StackPanel>
+                    <!-- Add other fields as needed here -->
+                    <ComboBox Width="120" Margin="10" HorizontalAlignment="Left">
+                        <ComboBoxItem Content="Tiền mặt"/>
+                        <ComboBoxItem Content="Chuyển khoản"/>
+                        <ComboBoxItem Content="Tiền mặt"/>
+                    </ComboBox>
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Trả lại" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Margin="10">
+                        <TextBox Width="100" Text="Nhập trả lại"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Guests and Rooms Section -->
+                <TextBlock Text="Danh sách khách (1)" FontSize="16" FontWeight="Bold" Margin="10,10,0,5"/>
+                <DataGrid Margin="10" AutoGenerateColumns="False" CanUserAddRows="True" ItemsSource="{Binding DanhSachKhach}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="STT" Width="Auto" Binding="{Binding STT, Mode=TwoWay}" />
+                        <DataGridCheckBoxColumn Header="KH chính" Width="Auto" Binding="{Binding KhachChinh, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Tên khách hàng" Width="*" Binding="{Binding TenKhachHang, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="CMT/Hộ chiếu" Width="Auto" Binding="{Binding CMNDHoChieu, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Điện thoại" Width="Auto" Binding="{Binding DienThoai, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Phòng" Width="Auto" Binding="{Binding Phong, Mode=TwoWay}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+                <TextBlock Text="Danh sách phòng (1)" FontSize="16" FontWeight="Bold" Margin="10,10,0,5"/>
+                <DataGrid Margin="10" AutoGenerateColumns="False" RenderTransformOrigin="0.512,0.508">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="STT" Width="Auto"/>
+                        <DataGridTextColumn Header="Tên phòng" Width="Auto"/>
+                        <DataGridTextColumn Header="Loại phòng" Width="Auto"/>
+                        <DataGridTextColumn Header="Người lớn" Width="Auto"/>
+                        <DataGridTextColumn Header="Trẻ em" Width="Auto"/>
+                        <DataGridTextColumn Header="CheckIn" Width="Auto"/>
+                        <DataGridTextColumn Header="CheckOut" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                    <Button Content="Lưu và In" Background="Green" Foreground="White" Width="100" Margin="5"/>
+                    <Button Content="Lưu" Background="Blue" Foreground="White" Width="100" Margin="5"/>
+                    <Button Content="Hủy" Background="Red" Foreground="White" Width="100" Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
